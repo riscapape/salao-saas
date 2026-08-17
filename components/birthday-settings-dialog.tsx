@@ -171,7 +171,7 @@ export function BenefitSummary({ salon }: { salon: SalonInfo }) {
       </p>
     )
   }
-
+  //
   let text = ''
   if (salon.bday_benefit_type === 'percent') {
     text = `${salon.bday_benefit_value}% de desconto`
