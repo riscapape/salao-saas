@@ -9,3 +9,9 @@ export function formatShortDate(date: string | null | undefined): string {
   if (!date) return '—'
   return format(parseISO(date), 'dd/MM/yyyy')
 }
+export function todayInSaoPaulo(): Date {
+  return new Date(
+    new Date().toLocaleDateString('en-CA', { timeZone: 'America/Sao_Paulo' }) +
+      'T00:00:00'
+  )
+}

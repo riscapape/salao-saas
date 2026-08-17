@@ -15,6 +15,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { ClientDialog, type ClientData } from '@/components/clients/client-dialog'
+import Link from 'next/link'
 
 function LastVisitBadge({ lastVisit }: { lastVisit?: string }) {
   const days = daysSince(lastVisit ?? null)
@@ -103,7 +104,14 @@ export default async function ClientesPage({
               <TableBody>
                 {list.map((client) => (
                   <TableRow key={client.id}>
-                    <TableCell className="font-medium">{client.name}</TableCell>
+                                      <TableCell>
+                      <Link
+                        href={`/app/clientes/${client.id}`}
+                        className="font-medium hover:underline"
+                      >
+                        {client.name}
+                      </Link>
+                    </TableCell>
                     <TableCell>{formatWhatsApp(client.whatsapp)}</TableCell>
                     <TableCell>{formatShortDate(client.birthday)}</TableCell>
                     <TableCell>
@@ -124,7 +132,12 @@ export default async function ClientesPage({
               <div key={client.id} className="rounded-lg border bg-background p-4">
                 <div className="flex items-start justify-between gap-2">
                   <div className="min-w-0">
-                    <p className="font-medium">{client.name}</p>
+                   <Link
+                    href={`/app/clientes/${client.id}`}
+                    className="font-medium hover:underline"
+                  >
+                    {client.name}
+                  </Link>
                     <p className="text-sm text-muted-foreground">
                       {formatWhatsApp(client.whatsapp)}
                     </p>
